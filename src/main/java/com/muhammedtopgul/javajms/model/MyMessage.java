@@ -21,4 +21,9 @@ public class MyMessage implements Serializable {
 
     private UUID id;
     private String content;
+
+    @Override
+    public String toString() {
+        return "MyMessage{ id='" + id + "', content='" + content + "'}";
+    }
 }

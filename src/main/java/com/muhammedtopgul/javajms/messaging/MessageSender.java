@@ -1,4 +1,4 @@
-package com.muhammedtopgul.javajms.sender;
+package com.muhammedtopgul.javajms.messaging;
 
 import com.muhammedtopgul.javajms.configuration.JmsConfig;
 import com.muhammedtopgul.javajms.model.MyMessage;
@@ -7,7 +7,6 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -19,7 +18,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class MessageSender {
 
-    private final Date date = new Date();
     private final JmsTemplate jmsTemplate;
 
     @Scheduled(fixedRate = 2000)
@@ -29,7 +27,7 @@ public class MessageSender {
         MyMessage myMessage = MyMessage
                 .builder()
                 .id(UUID.randomUUID())
-                .content(String.format("Hello at %d\n", date.getTime()))
+                .content("Hello...")
                 .build();
 
         jmsTemplate.convertAndSend(JmsConfig.MY_QUEUE, myMessage);
