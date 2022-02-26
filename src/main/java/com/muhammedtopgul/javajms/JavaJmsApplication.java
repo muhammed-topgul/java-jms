@@ -9,19 +9,25 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JavaJmsApplication {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
-        ActiveMQServer server = ActiveMQServers.newActiveMQServer(
-                new ConfigurationImpl()
-                        .setPersistenceEnabled(false)
-                        .setJournalDirectory("target/data/journal")
-                        .setSecurityEnabled(false)
-                        .addAcceptorConfiguration("invm", "vm://0")
-        );
-
-        server.start();
+//        runLocalActiveMQServer();
 
         SpringApplication.run(JavaJmsApplication.class, args);
     }
 
+//    private static void runLocalActiveMQServer() {
+//        try {
+//            ActiveMQServer server = ActiveMQServers.newActiveMQServer(
+//                    new ConfigurationImpl()
+//                            .setPersistenceEnabled(false)
+//                            .setJournalDirectory("target/data/journal")
+//                            .setSecurityEnabled(false)
+//                            .addAcceptorConfiguration("invm", "vm://0")
+//            );
+//            server.start();
+//        } catch (Exception exception) {
+//            exception.printStackTrace();
+//        }
+//    }
 }
